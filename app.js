@@ -15,6 +15,7 @@ require("./connect_mongodb/mongodb"); // after dotenv
 //Parsing
 app.use(cors());
 app.use(express.json());   
+app.use(express.urlencoded({ extended: false }));
             //const bodyParser = require("body-parser");
 
 //Setting CORS headers, to avoid CORS errors
