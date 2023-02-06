@@ -14,7 +14,7 @@ require("dotenv").config(); //or .config({ path:"../folder/.env"}), if .env is n
 
 //Parsing
 //app.use(cors());
-//app.use(express.json());   //const bodyParser = require("body-parser");
+app.use(express.json());   //const bodyParser = require("body-parser");
 //app.use(express.urlencoded({ extended: false }));
                                                     
 
