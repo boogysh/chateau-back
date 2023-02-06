@@ -4,7 +4,7 @@ const app = express();
 
 //requires routes
 //const stuffRoutes = require("./routes/stuff");
-//const msgRoutes = require("./routes/message");
+const msgRoutes = require("./routes/message");
 
 require("dotenv").config(); //or .config({ path:"../folder/.env"}), if .env is not a root file
 
@@ -32,7 +32,7 @@ require("dotenv").config(); //or .config({ path:"../folder/.env"}), if .env is n
 // //Setting routes
 
 // app.use("/api/commandes", stuffRoutes);
-// app.use("/api/messages", msgRoutes);
+app.use("/api/messages", msgRoutes);
 
 app.use("/", (req,res) => {
   res.json({message: "Hello from express"})
