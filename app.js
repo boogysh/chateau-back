@@ -23,9 +23,9 @@ app.use(express.json());   //const bodyParser = require("body-parser");
 //app.use("/api/commandes", stuffRoutes);
 app.use("/api/messages", msgRoutes);
 
-app.use("/", (req,res) => {
-  res.json({message: "Hello from express"})
-});
+// app.use("/", (req,res) => {
+//   res.json({message: "Hello from express"})
+// });
 
 // const PORT = 4000;
 app.listen(process.env.PORT, (error) => {
