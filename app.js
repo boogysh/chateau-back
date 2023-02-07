@@ -24,15 +24,17 @@ app.use(cors());
 //app.use("/api/commandes", stuffRoutes);
 //app.use("/api/messages", msgRoutes);
 
-app.use("/", (req, res) => {
-  res.json({ message: "Hello from express" });
-});
+
 app.get("/api/messages", (req, res, next) => {
   MSG.find()
     .sort({ createdAt: -1 })
     // .sort({ clientInfo: req.clientInfo })
     .then((messages) => res.status(200).json(messages))
     .catch((error) => res.status(400).json({ error }));
+});
+
+app.use("/", (req, res) => {
+  res.json({ message: "Hello from express" });
 });
 
 // const PORT = 4000;
