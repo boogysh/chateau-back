@@ -10,7 +10,7 @@ require("dotenv").config();
 //Connecting to mongoDB  // after dotenv 
 require("./connect_mongodb/mongodb"); 
 //Parsing
-//app.use(express.json()); //const bodyParser = require("body-parser");
+app.use(express.json()); //const bodyParser = require("body-parser");
 app.use(cors());
 
 // //Setting routes
