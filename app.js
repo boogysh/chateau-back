@@ -1,26 +1,26 @@
 const express = require("express");
 const app = express();
-//const cors = require("cors");
+const cors = require("cors");
 
 
 //requires routes
-//const stuffRoutes = require("./routes/stuff");
+const stuffRoutes = require("./routes/stuff");
 const msgRoutes = require("./routes/message");
 
 require("dotenv").config(); //or .config({ path:"../folder/.env"}), if .env is not a root file
 
 // //Connecting to mongoDB
-//require("./connect_mongodb/mongodb"); // after dotenv
+require("./connect_mongodb/mongodb"); // after dotenv
 
 //Parsing
-//app.use(cors());
+app.use(cors());
 app.use(express.json());   //const bodyParser = require("body-parser");
 //app.use(express.urlencoded({ extended: false }));
                                                     
 
 // //Setting routes
 
-//app.use("/api/commandes", stuffRoutes);
+app.use("/api/commandes", stuffRoutes);
 app.use("/api/messages", msgRoutes);
 
 // app.use("/", (req,res) => {
