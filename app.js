@@ -27,7 +27,7 @@ app.use(cors());
 app.use("/", (req, res) => {
   res.json({ message: "Hello from express" });
 });
-app.get("/api/commandes", (req, res, next) => {
+app.get("/api/messages", (req, res, next) => {
   MSG.find()
     .sort({ createdAt: -1 })
     // .sort({ clientInfo: req.clientInfo })
