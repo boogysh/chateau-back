@@ -9,14 +9,10 @@
     ],
     "routes":[
         {
-            "src":"/",
-            
-            "dest": "app.js"
-        },
-        {
-            "src":"/api/messages",
+            "src":"/(.*)",
             
             "dest": "app.js"
         }
+        
     ]
 }
