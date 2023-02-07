@@ -1,64 +1,33 @@
 const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
-const http =  require("http");
 //const cors = require("cors");
 
 //requires routes
 // const stuffRoutes = require("./routes/stuff");
 const msgRoutes = require("./routes/message");
-
-require("dotenv").config(); //or .config({ path:"../folder/.env"}), if .env is not a root file
-
-//Connecting to mongoDB
-//require("./connect_mongodb/mongodb"); // after dotenv
-
+require("dotenv").config(); 
+require("./connect_mongodb/mongodb"); // after dotenv //Connecting to mongoDB
 
 //Parsing
 //app.use(express.json()); //const bodyParser = require("body-parser");
 //app.use(cors());
-//app.use(express.urlencoded({ extended: false }));
 
 // //Setting routes
 //app.use("/api/commandes", stuffRoutes);
 app.use("/api/messages", msgRoutes);
 
-
 // app.use("/", (req, res) => {
 //   res.json({ message: "Hello from express" });
 // });
-
-//Connecting to mongoDB  
-// mongoose.connect('mongodb+srv://boogysh:' + process.env.MONGO_DB_PASSWORD + '@cluster0.m2vegey.mongodb.net/?retryWrites=true&w=majority'
-// ,
-// { useNewUrlParser: true,
-//   useUnifiedTopology: true 
-// },)
-//   .then(() => console.log('Connexion à MongoDB réussie !'))
-//   .catch(() => console.log('Connexion à MongoDB échouée !'));
-
-// // const PORT = 4000;
-// app.listen(process.env.PORT, (error) => {
-//   error
-//     ? console.log(error)
-//     : console.log(`Server is running on port ${process.env.PORT}`);
-// });
-
-//---------------------------------------------------
-const port = process.env.PORT || 4000;
-
-const server = http.createServer(app);
-
-mongoose.connect(process.env.MONGODB_URL).then(() => {
-  console.log("Mongodb connected");
-  server.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
-  });
-}).catch((err) => {
-  console.log({ err });
-  // process.exit(1);
+app.listen(process.env.PORT, (error) => {
+  error
+    ? console.log(error)
+    : console.log(`Server is running on port ${process.env.PORT}`);
 });
-  //---------------------------------------------------
+
+
+
+
 
 //Setting CORS headers, to avoid CORS errors
 

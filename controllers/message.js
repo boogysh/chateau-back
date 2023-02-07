@@ -1,8 +1,8 @@
 const MSG = require("../models/Message");
 
 exports.createMessage = (req, res) => {
-  const { firstName, lastName, tel,  email, messageTxt } = req.body;
-  const message = new MSG ({ firstName, lastName, tel,  email, messageTxt });
+  const { firstName, lastName, tel, email, messageTxt } = req.body;
+  const message = new MSG({ firstName, lastName, tel, email, messageTxt });
   message
     .save()
     .then((message) => res.status(200).json(message))
@@ -18,31 +18,19 @@ exports.createMessage = (req, res) => {
 //     .catch((error) => res.status(400).json({ error }));
 // };
 exports.getMessage = async (req, res) => {
-  try{
-    MSG.find()
-    .sort({ createdAt: -1 })
-    // .sort({ clientInfo: req.clientInfo })
+  try {
+    const msg = await MSG.find();
+    if (!msg) return res.status(204).json({ message: "No messages found" });
+    res
+      .json(msg)
+      .sort({ createdAt: -1 })
+      // .sort({ clientInfo: req.clientInfo })
 
-    .then((messages) => res.status(200).json(messages))
+      // .then((messages) => res.status(200).json(messages));
+  } catch {
+    (error) => res.status(400).json({ error });
   }
-  catch{
-    (error) => res.status(400).json({ error })
-  };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // exports.getOneOrder = (req, res, next) => {
 //   // Order.findById(req.params.id)

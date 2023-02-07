@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "golive": "lt --port 4444"
   },
   "author": "",
   "engines": {
@@ -17,7 +18,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "localtunnel": "^2.0.2"
   },
   "repository": {
     "type": "git",
