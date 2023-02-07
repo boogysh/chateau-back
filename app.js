@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const mongoose = require('mongoose');
 //const cors = require("cors");
 
 //requires routes
@@ -9,7 +10,14 @@ const msgRoutes = require("./routes/message");
 require("dotenv").config(); //or .config({ path:"../folder/.env"}), if .env is not a root file
 
 //Connecting to mongoDB
-require("./connect_mongodb/mongodb"); // after dotenv
+//require("./connect_mongodb/mongodb"); // after dotenv
+mongoose.connect('mongodb+srv://boogysh:' + process.env.MONGO_DB_PASSWORD + '@cluster0.m2vegey.mongodb.net/?retryWrites=true&w=majority'
+,
+{ useNewUrlParser: true,
+  useUnifiedTopology: true 
+},)
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 //Parsing
 //app.use(express.json()); //const bodyParser = require("body-parser");
