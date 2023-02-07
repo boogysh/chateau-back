@@ -1,24 +1,29 @@
 const express = require("express");
 const app = express();
-//const mongoose = require('mongoose');
 //const cors = require("cors");
-//const MSG = require("./models/Message");
 
 //requires routes
 // const stuffRoutes = require("./routes/stuff");
 const msgRoutes = require("./routes/message");
-require("dotenv").config(); 
-require("./connect_mongodb/mongodb"); // after dotenv //Connecting to mongoDB
 
+require("dotenv").config(); 
+//Connecting to mongoDB  // after dotenv 
+require("./connect_mongodb/mongodb"); 
 //Parsing
 //app.use(express.json()); //const bodyParser = require("body-parser");
 //app.use(cors());
 
-
-
 // //Setting routes
 //app.use("/api/commandes", stuffRoutes);
 app.use("/api/messages", msgRoutes);
+
+app.listen(process.env.PORT, (error) => {
+  error
+    ? console.log(error)
+    : console.log(`Server is running on port ${process.env.PORT}`);
+});
+
+//-------------------------------------------------------------
 
 // app.get("/api/messages", async (req, res) => {
 //   try {
@@ -35,16 +40,7 @@ app.use("/api/messages", msgRoutes);
 //   }
 // });
 
-
-app.listen(process.env.PORT, (error) => {
-  error
-    ? console.log(error)
-    : console.log(`Server is running on port ${process.env.PORT}`);
-});
-
-
-
-
+//------------------------------------------------------
 
 //Setting CORS headers, to avoid CORS errors
 
