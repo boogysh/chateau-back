@@ -17,7 +17,7 @@ exports.createMessage = (req, res) => {
 //     .then((messages) => res.status(200).json(messages))
 //     .catch((error) => res.status(400).json({ error }));
 // };
-exports.getMessage = async (req, res, next) => {
+exports.getMessage = async (req, res) => {
   try{
     MSG.find()
     .sort({ createdAt: -1 })
