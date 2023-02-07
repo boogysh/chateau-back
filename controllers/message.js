@@ -21,8 +21,8 @@ exports.getMessage = async (req, res) => {
   try {
     const msg = await MSG.find();
     if (!msg) return res.status(204).json({ message: "No messages found" });
-    res.json(msg);
     res.sort({ createdAt: -1 });
+    res.json(msg);
     // .sort({ clientInfo: req.clientInfo })
 
     // .then((messages) => res.status(200).json(messages));
