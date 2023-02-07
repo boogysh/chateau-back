@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 //const cors = require("cors");
 //const MSG = require("./models/Message");
 
@@ -8,19 +8,13 @@ const mongoose = require('mongoose');
 // const stuffRoutes = require("./routes/stuff");
 const msgRoutes = require("./routes/message");
 require("dotenv").config(); 
-//require("./connect_mongodb/mongodb"); // after dotenv //Connecting to mongoDB
+require("./connect_mongodb/mongodb"); // after dotenv //Connecting to mongoDB
 
 //Parsing
 //app.use(express.json()); //const bodyParser = require("body-parser");
 //app.use(cors());
 
-mongoose.connect('mongodb+srv://boogysh:' + process.env.MONGO_DB_PASSWORD + '@cluster0.m2vegey.mongodb.net/?retryWrites=true&w=majority'
-,
-{ useNewUrlParser: true,
-  useUnifiedTopology: true 
-},)
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+
 
 // //Setting routes
 //app.use("/api/commandes", stuffRoutes);
