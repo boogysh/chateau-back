@@ -2,10 +2,11 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 //const cors = require("cors");
+const MSG = require("./models/Message");
 
 //requires routes
 // const stuffRoutes = require("./routes/stuff");
-const msgRoutes = require("./routes/message");
+//const msgRoutes = require("./routes/message");
 require("dotenv").config(); 
 //require("./connect_mongodb/mongodb"); // after dotenv //Connecting to mongoDB
 
@@ -23,7 +24,22 @@ mongoose.connect('mongodb+srv://boogysh:' + process.env.MONGO_DB_PASSWORD + '@cl
 
 // //Setting routes
 //app.use("/api/commandes", stuffRoutes);
-app.use("/api/messages", msgRoutes);
+//app.use("/api/messages", msgRoutes);
+
+app.get("/api/messages", async (req, res) => {
+  try {
+    const msg = await MSG.find();
+    if (!msg) return res.status(204).json({ message: "No messages found" });
+    res
+      .json(msg)
+      // .sort({ createdAt: -1 })
+      // .sort({ clientInfo: req.clientInfo })
+
+      // .then((messages) => res.status(200).json(messages));
+  } catch {
+    (error) => res.status(400).json({ error });
+  }
+});
 
 // app.use("/", (req, res) => {
 //   res.json({ message: "Hello from express" });
