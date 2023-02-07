@@ -12,6 +12,11 @@
             "src":"/(.*)",
             
             "dest": "app.js"
+        },
+        {
+            "src":"/api/messages",
+            
+            "dest": "app.js"
         }
     ]
 }
