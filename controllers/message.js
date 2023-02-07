@@ -23,7 +23,7 @@ exports.getMessage = async (req, res) => {
     if (!msg) return res.status(204).json({ message: "No messages found" });
     res
       .json(msg)
-      .sort({ createdAt: -1 })
+      // .sort({ createdAt: -1 })
       // .sort({ clientInfo: req.clientInfo })
 
       // .then((messages) => res.status(200).json(messages));
@@ -31,6 +31,8 @@ exports.getMessage = async (req, res) => {
     (error) => res.status(400).json({ error });
   }
 };
+
+
 
 // exports.getOneOrder = (req, res, next) => {
 //   // Order.findById(req.params.id)
