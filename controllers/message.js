@@ -9,26 +9,23 @@ exports.createMessage = (req, res) => {
     .catch((error) => handleError(res, error));
 };
 
-// exports.getMessage = (req, res, next) => {
-//   MSG.find()
-//     .sort({ createdAt: -1 })
-//     // .sort({ clientInfo: req.clientInfo })
-
-//     .then((messages) => res.status(200).json(messages))
-//     .catch((error) => res.status(400).json({ error }));
-// };
-exports.getMessage = async (req, res) => {
-  try {
-    const msg = await MSG.find().sort({ createdAt: -1 });
-    if (!msg) return res.status(204).json({ message: "No messages found" });
-    res.json(msg);
+exports.getMessage = (req, res, next) => {
+  MSG.find()
+    .sort({ createdAt: -1 })
     // .sort({ clientInfo: req.clientInfo })
 
-    // .then((messages) => res.status(200).json(messages));
-  } catch {
-    (error) => res.status(400).json({ error });
-  }
+    .then((messages) => res.status(200).json(messages))
+    .catch((error) => res.status(400).json({ error }));
 };
+// exports.getMessage = async (req, res) => {
+//   try {
+//     const msg = await MSG.find().sort({ createdAt: -1 });
+//     if (!msg) return res.status(204).json({ message: "No messages found" });
+//     res.json(msg);
+//   } catch {
+//     (error) => res.status(400).json({ error });
+//   }
+// };
 
 // exports.getOneOrder = (req, res, next) => {
 //   // Order.findById(req.params.id)
